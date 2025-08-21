@@ -2,7 +2,9 @@ package com.main.demo.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "registros")
 public class Registro {
 
