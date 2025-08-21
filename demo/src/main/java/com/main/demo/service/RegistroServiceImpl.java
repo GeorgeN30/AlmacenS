@@ -9,6 +9,8 @@ import com.main.demo.repository.RegistroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,12 +24,13 @@ public class RegistroServiceImpl implements RegistroService {
     @Override
     public RegistroResponse save(RegistroCreateRequest request) {
         Registro registro = registroMapper.toRegistro(request);
+        registro.setFechaHora(LocalDateTime.now(ZoneId.systemDefault()));
         return registroMapper.toRegistroResponse(registroRepository.save(registro));
     }
 
     @Override
     public List<RegistroResponse> findAll() {
-        return registroRepository.findAll()
+        return registroRepository.findAllByOrderByIdDesc()
                 .stream()
                 .map(registroMapper::toRegistroResponse)
                 .collect(Collectors.toList());
