@@ -61,4 +61,12 @@ public class RegistroServiceImpl implements RegistroService {
         }
         registroRepository.deleteById(id);
     }
+
+    @Override
+    public List<RegistroResponse> findOt(String ot){
+        return registroRepository.findByOtContainingIgnoreCase(ot)
+        .stream()
+        .map(registroMapper::toRegistroResponse)
+        .collect(Collectors.toList());
+    }
 }

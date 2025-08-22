@@ -39,4 +39,9 @@ public class RegistroController {
     public void delete(@PathVariable Long id) {
         registroService.deleteById(id);
     }
+
+    @GetMapping("/busqueda")
+    public List<RegistroResponse> buscar(@RequestParam String q){
+        return registroService.findOt(q);
+    }
 }

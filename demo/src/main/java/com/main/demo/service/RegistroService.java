@@ -10,4 +10,5 @@ public interface RegistroService {
     RegistroResponse findById(Long id);
     RegistroResponse update(Long id, RegistroCreateRequest request);
     void deleteById(Long id);
+    List<RegistroResponse> findOt(String ot);
 }
